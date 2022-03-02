@@ -1,0 +1,18 @@
+// =========== Terraform basics ============//
+terraform init (fire this command a. during initial set-up and b. if you are adding any new module)
+terraform fmt (formatting the code structure - spacing and indentation)
+terraform validate
+terraform plan (this command also does the validation, so no need to validate separetely)
+terraform apply (to execute the deployment)
+terraform refresh (match the state file with whatever the remote instance is)
+terraform output (if you have added the output variable to the file)
+terraform apply -auto-approve (no need to type "yes")
+terraform destroy (destory all resources)
+terraform apply -destroy (destory all resoruces)
+
+
+// ============ Terraform using variables ======= //
+terraform plan -var=<variable name>="<value>"
+terraform plan (another option to use variable in your code is to reate a file name with .extension "tfvars" and add all variables in this file)
+
+
