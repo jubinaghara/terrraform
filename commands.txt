@@ -15,4 +15,13 @@ terraform apply -destroy (destory all resoruces)
 terraform plan -var=<variable name>="<value>"
 terraform plan (another option to use variable in your code is to reate a file name with .extension "tfvars" and add all variables in this file)
 
+// ============= Terraform Cloud Workspace ======//
+terraform workspace list (by default all are in *defult workspace)
 
+
+// ========= Programmatically access aws cli =====//
+First create rsa key: sudo ssh-keygen -t rsa   
+Give following path: /root/.ssh/terraform
+Elevate the permission: chmod 400 /root/.ssh/terraform.pub
+terraform apply 
+sudo ssh ec2-user@$(terraform output -raw public_ip) -i /root/.ssh/terraform
