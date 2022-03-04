@@ -4,19 +4,10 @@
 //     -It will also create security group with two rules to allow HTTP, SSH        //
 //     -Aso, after resources are created it will run cloud-init script (user-data)  //
 //     -We will grab public_ip as output to SSH into EC2 instance                   //
-//      [USES REMOTE CLOUD BACKEND - MAKE SURE YOU HAVE CREATED ACCOUNT AND ORG]    //                                                 //
+//     [LOCAL BACKEND WILL BE USED HERE - NOT THE CLOUD ]                           //
 //==================================================================================//
-
 terraform {
-  backend "remote"  {
-    organization = "agharajubin" //replace with your ogranization name that created in terraform
-
-    workspaces {
-      name = "providers"
-    }
-  }
-
-  required_providers {
+   required_providers {
     aws = {
       source = "hashicorp/aws"
       version = "4.3.0"
@@ -105,6 +96,16 @@ resource "aws_instance" "my_server" {
   }
 }
 
+# NULL resource: The null_resource resource implements the standard resource lifecycle but
+# takes no further action.
+resource "null_resource" "status" {
+  provisioner "local-exec" {
+    command  = "aws ec2 wait instance-status-ok --instance-ids ${aws_instance.my_server.id}"
+  }
+  depends_on = [
+      aws_instance.my_server
+  ]
+}
 
 //=================================================================================//
 //              Grab public_ip from output to SSH into our EC2 instance            //
