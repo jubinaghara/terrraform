@@ -38,7 +38,9 @@ Learning Terraform...😎
 - Ouput CLI
 - Chaining outputs from a module
 - Local values
-- Data sources
+- Data sources 
+
+Data source: One of the example of data source is - you can filter the image by enviroment and version instead of specifying the ami-id.
 
 #### Cloud Workspace
 terraform workspace list (by default all are in *defult workspace)
