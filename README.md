@@ -4,6 +4,15 @@ HashiCorp Terraform
 ## About
 Learning Terraform...😎
 
+### Initial setup
+1.	If you are using Windows, install Linux sub-system on windows (wsl) (command > wsl --install Ubuntu)
+2.	Open WSL terminal in vscode
+3.	Install terraform (https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started)
+4.	Install terraform vscode extension
+5.	Install aws CLI https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+6.	Create new AWS user with programmatic access user 
+8.  Configure AWS CLI (command > aws configure -> enter access-ID, secret and default region)
+
 ### Commands
 #### Basic commands
 - terraform init 
@@ -14,12 +23,14 @@ Learning Terraform...😎
 - terraform refresh (match the state file with whatever the remote instance is)
 - terraform output  (if you have added the output variable to the file)
 - terraform output -json
-- terraform output -raw <name of the parameter> 
+- terraform output -raw 'name of the parameter' 
 - terraform apply -auto-approve (no need to type "yes")
 - terraform destroy (destroy all resources)
 - terraform apply -destroy (destory all resoruces)
 - terraform apply -replace=aws_instance.my_server (replace specfic resource)
 - terraform providers (get list of all providers you are currently using)
+- terraform console
+
 #### Variables
 - terraform plan -var="variable name"="value"
 - terraform plan (another option to use variable in your code is to reate a file name with extension ".tfvars" and add all variables to this file)
