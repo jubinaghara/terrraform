@@ -4,6 +4,11 @@ HashiCorp Terraform
 ## About
 Learning Terraform...😎
 
+## How to pass the hashicorp certified: terraform associate
+1. https://youtu.be/V4waklkBC38 (Complete freeCodeCamp 13 hrs tutorial)
+2. Follow along. Get you hands dirty
+3. 
+
 ### Initial setup
 1.	If you are using Windows, install Linux sub-system on windows (wsl) (command > wsl --install Ubuntu)
 2.	Open WSL terminal in vscode
@@ -30,6 +35,28 @@ Learning Terraform...😎
 - terraform apply -replace=aws_instance.my_server (replace specfic resource)
 - terraform providers (get list of all providers you are currently using)
 - terraform console
+
+#### Terrform state commands
+- terrafom state list (list resoruce in the state)
+- terraform state mv (move an item in the state)
+    - example if you want to change the instance name  - terraform state mv aws_instance.old_name aws_instance.new_name
+- terraform state pull (pull current remote state and output to stdout)
+- terraform state push (update remote state from a local state)
+- terraform state replace-provider (replace provider in the state)
+- terraform state rm (remove instances from the state)
+- terraform state show 'resource name' (show a resource in the state)
+
+#### Saved plan
+terraform plan -out=my_saved_plan.plan (to save the plan)
+terraform apply my_saved_plan.plan (to apply the saved plan)
+
+#### Troubleshooting
+TF_LOG=TRACE terraform apply (enable trace level)
+TF_LOG=TRACE TF_LOG_PATH=./terraform.log terraform apply (enable trace level, save log file)
+
+
+
+
 
 #### Variables
 - terraform plan -var="variable name"="value"
@@ -62,4 +89,5 @@ terraform workspace list (by default all are in *defult workspace)
 - Elevate the permission: chmod 400 /root/.ssh/terraform.pub
 - terraform apply 
 - sudo ssh ec2-user@$(terraform output -raw public_ip) -i /root/.ssh/terraform
+
 
